@@ -184,6 +184,8 @@ add_library(common-common-objs OBJECT
 # retrieved OpenSSL location. This is especially important when cross
 # compiling (e.g. targeting Windows).
 target_include_directories(common-common-objs PRIVATE ${OPENSSL_INCLUDE_DIR})
+target_include_directories(common-common-objs PRIVATE ${UDEV_INCLUDE_DIR})
+target_include_directories(common-common-objs PRIVATE ${BLKID_INCLUDE_DIR})
 # for options.cc
 target_compile_definitions(common-common-objs PRIVATE
   "CMAKE_INSTALL_LIBDIR=\"${CMAKE_INSTALL_LIBDIR}\""
@@ -241,4 +243,5 @@ if(HAVE_KEYUTILS)
   set(parse_secret_srcs
     secret.c)
   add_library(parse_secret_objs OBJECT ${parse_secret_srcs})
+  target_include_directories(parse_secret_objs PRIVATE ${KEYUTILS_INCLUDE_DIR})
 endif()
