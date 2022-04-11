@@ -337,10 +337,6 @@ target_link_libraries(librbd PRIVATE
   pthread
   ${CMAKE_DL_LIBS}
   ${EXTRALIBS} ${GSSAPI_LIBRARIES})
-if(HAVE_UDEV)
-  target_link_libraries(librbd PRIVATE
-    udev)
-endif()
 if(ENABLE_SHARED)
   set_target_properties(librbd PROPERTIES
     OUTPUT_NAME rbd
